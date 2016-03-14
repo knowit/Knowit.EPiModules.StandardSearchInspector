@@ -1,0 +1,6 @@
+﻿@model SpecialSearchViewModel 
+
+@foreach (var item in Model.Hits) {
+    <li>@item.Name (@item.PageTypeName)</li>
+}
+

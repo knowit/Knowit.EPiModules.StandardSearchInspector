@@ -1,0 +1,14 @@
+﻿@model Knowit.EPiModules.StandardSearchInspector.Models.ViewModels.SearchModuleViewModel
+
+@{
+    Layout = "/modules/Knowit.EPiModules.StandardSearchInspector/Views/Shared/Layouts/_Module.cshtml";
+}
+
+<div class="main-module-container epi-contentContainer">
+    <h1>@Model.Title</h1>
+
+    <input placeholder="Search" type="text" class="js-searchmodule-input searchmodule-input" />
+    <p class="search-input-helptext">Use * for wildcard terms.</p>
+    <div class="js-searchmodule-result">
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@using System.Web.Script
+@model Knowit.EPiModules.StandardSearchInspector.Models.ViewModels.SearchModuleViewModel
+
+<div>
+    <h2>Search result:</h2>
+    <p>
+        Number of hits: @Model.NumberOfHits<br />
+        Showing page: @Model.Page of @Model.Pages<br />
+    </p>
+    <div>
+        @foreach (var item in Model.Hits)
+        {
+            <div class="searchmodule-result-item">
+                <pre class="js-result-item-as-json" data-json="">@item</pre>
+            </div>
+        }
+    </div>
+
+    @if (Model.Pages > 1)
+    {
+        <div class="paging-container clearfix">
+            <ul class="clearfix">
+                @for (var i = 1; i <= Model.Pages; i++)
+                {
+                    var css = Model.Page == i ? "active" : string.Empty;
+
+                    <li class="@css"><a data-page="@i" class="js-pagination-link epi-visibleLink" href="#">@i</a></li>
+                }
+            </ul>
+        </div>
+    }
+</div>

@@ -1,0 +1,54 @@
+﻿@model SpecialSearchViewModel
+
+@{
+    Layout = "~/Views/Shared/Layouts/_TwoPlusOne.cshtml";
+}
+
+<h1>Special Search</h1>
+
+<form method="GET" style="margin-bottom:0;" >
+    <input value="" style="margin-bottom:0;" type="text" placeholder="Søk" name="q" id="q" class="js-input" autocomplete="off"  />
+    <button>Søk</button>
+</form>
+<ul class="js-autocomplete" style="list-style-type:none;margin:0;padding:0;">
+
+</ul>
+
+
+    @if (Model.Hits != null)
+    {
+        <h2 style="margin-top:40px;">Search Result:</h2>
+        <ul>
+            @foreach (var item in Model.Hits)
+            {
+
+            <li>@item.Name (@item.PageTypeName)</li>
+
+            }
+            
+        </ul>
+    }
+<script>
+
+    $(".js-input").on("keyup", function () {
+        var val = $(this).attr("value");
+
+        if (val.length <= 0) {
+            $(".js-autocomplete").html("");
+            return;
+        }
+
+        $.ajax({
+            url: "http://"+window.location.host + window.location.pathname + "Search?q=" + val,
+            dataType: "html",
+            method: "GET",
+            success: function (e) {
+                $(".js-autocomplete").html(e);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    });
+
+</script>

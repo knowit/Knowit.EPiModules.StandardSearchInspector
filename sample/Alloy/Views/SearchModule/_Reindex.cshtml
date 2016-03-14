@@ -1,0 +1,28 @@
+﻿@using Lucene.Net.Analysis;
+@using Lucene.Net.Index;
+@using Lucene.Net.Search; 
+@using EPiServer.Search.IndexingService.FieldSerializers; 
+@using Lucene.Net.Analysis.Standard;
+@using Lucene.Net.Documents;
+@using Lucene.Net.QueryParsers;
+@using Lucene.Net.Store;
+@using EPiServer.Data.Dynamic;
+@using EPiServer.ServiceLocation;
+@using EPiServer.Shell.WebForms;
+@using EPiServer.Core; 
+
+@{
+    Layout = "/Views/Shared/Layouts/_Module.cshtml";
+
+    DynamicDataStore Store = DynamicDataStoreFactory.Instance.GetStore(typeof(IndexingInformation)) ?? DynamicDataStoreFactory.Instance.CreateStore(typeof(IndexingInformation));
+    IndexingInformation indexingInformation = Enumerable.FirstOrDefault<IndexingInformation>(Store.LoadAll<IndexingInformation>());
+    var indexId = indexingInformation.Id;
+
+    //var test = Lucene.Net.Index.IndexReader.ListCommits(indexId);
+}
+<div>
+    
+</div>
+<div class="main-module-container epi-contentContainer js-iframe-container" data-iframeurl="/EPiServer/CMS/Admin/IndexContent.aspx">
+    <div class="loader-container"><img class="loader" src='/Static/gfx/ajax-loader-large.gif'></div>
+</div>

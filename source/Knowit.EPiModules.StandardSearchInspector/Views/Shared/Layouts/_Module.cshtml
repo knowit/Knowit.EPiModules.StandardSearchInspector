@@ -1,0 +1,29 @@
+﻿@using EPiServer.Framework.Web.Resources
+@using EPiServer.Shell.Navigation
+@using EPiServer.Shell.Web.Mvc.Html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewBag.Title</title>
+        @Html.Raw(ClientResources.RenderResources("ShellCore"))
+        @Html.Raw(ClientResources.RenderResources("ShellWidgets"))
+        @Html.Raw(ClientResources.RenderResources("ShellCoreLightTheme"))
+        @Html.Raw(ClientResources.RenderResources("Navigation"))
+        @Html.Raw(ClientResources.RenderResources("DojoDashboardCompatibility", new[] { ClientResourceType.Style }))
+        <link href="/modules/Knowit.EPiModules.StandardSearchInspector/Static/css/searchmodule.css" rel="stylesheet" />
+    </head>
+
+    <body>
+
+        @Html.Raw(Html.ShellInitializationScript())
+        @Html.Raw(Html.GlobalMenu())
+        <div>
+            @RenderBody()
+        </div>
+
+        <script src="/modules/Knowit.EPiModules.StandardSearchInspector/Static/js/jquery-2-1-4.min.js"></script>
+        <script src="/modules/Knowit.EPiModules.StandardSearchInspector/Static/js/SearchModule.js"></script>
+    </body>
+</html>
