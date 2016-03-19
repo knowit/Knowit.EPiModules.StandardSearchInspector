@@ -4,8 +4,11 @@
 <div>
     <h2>Search result:</h2>
     <p>
-        Number of hits: @Model.NumberOfHits<br />
-        Showing page: @Model.Page of @Model.Pages<br />
+        Number of hits: @Model.NumberOfHits<br/>
+        @if (Model.NumberOfHits > 0)
+        {
+            <span>Showing page: @Model.Page of @Model.Pages</span><br />
+        }
     </p>
     <div>
         @foreach (var item in Model.Hits)
